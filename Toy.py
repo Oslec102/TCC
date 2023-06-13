@@ -4,40 +4,69 @@ import pandas as pd
 
 
 #Ler o total de colaboradores da Planilha Excel
-colaboradores_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=1, usecols=[0], header=None, names=['Colaborador'])
-print(colaboradores_df)
+C_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=1, names=['Colaborador'])
+print("======================================")
+print("| C_df                                |")
+print("======================================")
+print(C_df)
+print()
 
 
 # Ler as áreas da planilha Excel.
-areas_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=0, usecols=[0], header=None, names=['Area'])
-print(areas_df)
+A_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=0, names=['Area'])
+print("======================================")
+print("| A_df                                  |")
+print("======================================")
+print(A_df)
 print()
 
 # Ler os turnos da planilha Excel.
-turnos_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=2, usecols=[0], header=None, names=['Turno'])
-print(turnos_df)
+T_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=2, names=['Turno'])
+print("======================================")
+print("| T_df                                  |")
+print("======================================")
+print(T_df)
 print()
 
+C_d_t_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=3, names=['ColaboradoresDiaTurno'])
+print("======================================")
+print("|C_d_t_df                                   |")
+print("======================================")
+print(C_d_t_df)
+print()
+
+#colaboradoresCargaHoraria_df = pd.read_excel('ProblemaToy.xlsx',sheet_name=4, names=['ColaboradoresCargaHoraria'])
+
+#print("======================================")
+#print("| colaboradoresCargaHoraria_df                                  |")
+#print("======================================")
+#print(colaboradoresCargaHoraria_df)
+#print()
+
+
 #Dicionário com os dias da semana.
-Dia = ("Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom")
-print(Dia)
+D = ("Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom")
+print("======================================")
+print("| D                                  |")
+print("======================================")
+print(D)
 print()
 
 #Cria um loop for e aloca os colaboradores no dia e turno de trabalho, puxando os dados da planilha.
 #OBS : O arquivo está lendo só o primeiro dia da semana, não esta percorrendo todas as linhas.
 
-dados = pd.read_excel('ProblemaToy.xlsx',sheet_name=3)
-conjunto = set()
+#dados = pd.read_excel('ProblemaToy.xlsx',sheet_name=3)
+#conjunto = set()
 
-for index, row in dados.iterrows():
-    print(row)
-    Dia = row["Dia"]
-    Turno = row["Turno"]
-    Colaboradores = row["Colaboradores Disponiveis"]
-    conjunto.add((Dia, Turno,Colaboradores))
+#for index, row in dados.iterrows():
+ #   print(row)
+  #  Dia = row["Dia"]
+   # Turno = row["Turno"]
+    #Colaboradores = row["Colaboradores Disponiveis"]
+    #conjunto.add((Dia, Turno,Colaboradores))
 
-print(conjunto)
-print()
+#print(conjunto)
+#print()
 
 #PARÂMETROS
 
@@ -60,6 +89,9 @@ for index, row in dadosminutos.iterrows():
     h[(colaborador, dia, turno)] = carga_horaria
 
 # Exibe o dicionário
+print("======================================")
+print("| h                                  |")
+print("======================================")
 print(h)
 print()
 
@@ -67,11 +99,14 @@ print()
 df_tempoLimpeza = pd.read_excel('ProblemaToy.xlsx')
 
 # Cria um dicionário com o tempo que cada área leva para ser limpa
-tempo_area = dict(zip(df_tempoLimpeza["Area"], df_tempoLimpeza["Tempo_limpeza_em_minutos"]))
-print(tempo_area)
-
+t_a = dict(zip(df_tempoLimpeza["Area"], df_tempoLimpeza["Tempo_limpeza_em_minutos"]))
+print("======================================")
+print("| t_a                                  |")
+print("======================================")
+print(t_a)
 
 #ar[a] = INT prédio no qual a área a está localizado
+
 
 df_predioArea = pd.read_excel('ProblemaToy.xlsx')
 # Criando um dicionário que associa cada área ao prédio correspondente
@@ -80,16 +115,20 @@ for index, row in df_predioArea.iterrows():
     area = row['Area']
     predio = row['Predio']
     ar[area] = predio
-
+print("======================================")
+print("| ar                                  |")
+print("======================================")
+print(ar)
 print()
 
 
 # ler as abas 'Área' e 'Colaboradores' do arquivo Excel
 df_Fixo = pd.read_excel('ProblemaToy.xlsx', sheet_name=['Area', 'Colaboradores'])
 
+f = {}
 if isinstance(df_Fixo, pd.DataFrame):
     # Criar um dicionário para armazenar a fixação dos colaboradores às áreas
-    f = {}
+    
 
     # Iterar sobre as linhas do DataFrame
     for index, row in df_Fixo.iterrows():
@@ -102,7 +141,12 @@ if isinstance(df_Fixo, pd.DataFrame):
         f[(colaborador, area)] = fixado
 
     # Exibir o dicionário com a fixação dos colaboradores às áreas
-    print(f)
+    
+print("======================================")
+print("|   f                                |")
+print("======================================")
+print(f)
+print()
 
 
 
@@ -117,22 +161,6 @@ if isinstance(df_Fixo, pd.DataFrame):
 
 
 
-#df_Area = df_Fixo['Area']
-#df_Colaboradores = df_Fixo['Colaboradores']
-# Criando um conjunto f[c,a]
-#f = {}
-#if isinstance(df_Fixo, pd.DataFrame):
-# Iterando pelas linhas do dataframe
-
-  #for index, row in df_Fixo.iterrows():
-    #colaborador = row['Colaboradores']
-    #area = row['Area']
-    #fixo = row['ColaboradorFixo']
-
-    # Adicionando ao conjunto f[c,a]
-#f[(colaborador, area)] = fixo
-
-   # print(f)
 
 
 
